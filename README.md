@@ -1,45 +1,63 @@
-# Vue 3 + Vite + TailwindCSS
+1-savol:
+v-model data binding qilish uchun ishlatiladi. U input, textarea, va select elementlari, form elementlarini Vue komponentdagi data bilan bog‘lash uchun ishlatiladi.
 
-## Vue template
-Description: This project is a Vue.js 3 and TailwindCSS-based template, ideal for quickly setting up frontend projects.
-### Cloning the Repository
-To clone the project, use the following commands:
+<template>
+  <div>
+    <input v-model="name" placeholder="Ismingizni kiriting" />
+    <p>Salom, {{ name }}!</p>
+  </div>
+</template>
 
-```
-git clone https://github.com/ShahnozaAbdualimova/vue-template.git
-cd vue-template
-```
-### Requirements
-To run this project, you’ll need the following:
+<script setup>
+  data() {
+    return {
+      name: '',
+    };
+  },
+</script>
 
-- **Node.js** (version 14 or higher)
-- **NPM** or **Yarn**
 
-To install Node.js, visit the [official Node.js website](https://nodejs.org/).
+2-savol:
+Vue Lifecycle Hooks 
+Vue komponentlari turli bosqichlardan o‘tadi: yaratilish, o‘rnatilish, yangilanish, va yo‘q qilish. Lifecycle hooks — bu har bir bosqichda ishga tushadigan funksiyalar.
 
-### Installation Steps
-1. **Navigate to the project folder:**
+mounted: DOM-ga komponent o‘rnatilgandan keyin ishlaydi.
+beforeDestroy: Komponent DOM-dan o‘chirishdan oldin ishlaydi.
+<template>
+  <div>
+    <p>blog page yuklandi!</p>
+  </div>
+</template>
 
-   ```
-   cd vue-template
-   ```
-2. **Install the necessary packages:**
+<script>
+export default {
+  mounted() {
+    console.log('blog page DOM-ga o‘rnatildi');
+  },
+  beforeDestroy() {
+    console.log('blog page o‘chirishdan oldin');
+  },
+};
+</script>
 
-   ```
-   npm install
-   ```
-3. **Run the project on a local server:**
+3-savol:
+Props va Emits nima?
+Props: Ota komponentdan bola komponentga data yuborish uchun ishlatiladi.
+Emits: Bola komponentdan ota komponentga hodisalar (events) yuborish uchun ishlatiladi.
 
-   ```
-   npm run dev
-   ```
 
-### Useful Resources
 
-Here are some useful links:
+4-savol:
+Teleport — bir komponent ichidagi HTML tarkibini boshqa DOM elementiga yuborish uchun ishlatiladi.
+misol uchun,  Modal oynalar, global dialoglar kabi joylashuviga bog‘liq bo‘lmagan elementlar uchun ishlatiladi.
 
-- **Vue.js 3 Official Documentation**: [Vue.js Docs](https://vuejs.org/)
-- **TailwindCSS Official Documentation**: [TailwindCSS Docs](https://tailwindcss.com/)
-- **GitHub Markdown Guide**: [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
-
-#### Good luck with your project! ☘️
+<template>
+  <div>
+    <p>Asosiy sahifa</p>
+    <teleport to="body">
+      <div class="modal">
+        Bu modal oynadir.
+      </div>
+    </teleport>
+  </div>
+</template>
